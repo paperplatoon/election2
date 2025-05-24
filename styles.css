@@ -1,0 +1,23 @@
+/* States Won Display */
+.states-won-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-right: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.states-won-label {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.states-won-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00;
+}
