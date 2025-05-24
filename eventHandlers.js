@@ -16,9 +16,10 @@ export function handleStateClick(event, gameState) {
     const state = findStateById(gameState, stateId);
 
     if (state && state.workers.length > 0) {
-        const moneyEarned = calculateMoneyFromClick(gameState, stateId);
+        let moneyEarned = calculateMoneyFromClick(gameState, stateId);
 
         if (moneyEarned > 0) {
+            moneyEarned = Math.round(moneyEarned * 100) / 100
             gainMoney(gameState, moneyEarned);
             showClickEffect(event.clientX, event.clientY, `$${moneyEarned}`);
         }

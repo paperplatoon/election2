@@ -88,10 +88,10 @@ function updateUI() {
             // Update background color based on support percentage
             setStateBackgroundColor(stateElement, state.type, state.supportPercentage);
             
-            // Update support percentage display
+            // Update support percentage display - Enhanced to show 2 decimal places
             const supportElement = stateElement.querySelector('.state-support');
             if (supportElement) {
-                supportElement.textContent = `${state.supportPercentage.toFixed(1)}%`;
+                supportElement.textContent = `${state.supportPercentage.toFixed(2)}%`;
             }
             
             // Update worker count display
@@ -117,7 +117,7 @@ function updateUI() {
                 const moneyElement = document.createElement('div');
                 moneyElement.className = 'state-money';
                 const moneyPerClick = Math.floor(state.supportPercentage * gameState.config.moneyPerSupportPercent);
-                moneyElement.textContent = `$${moneyPerClick}/click`;
+                moneyElement.textContent = `${moneyPerClick}/click`;
                 stateElement.appendChild(moneyElement);
             }
         }
@@ -176,7 +176,7 @@ function createWorkerCardElement(card) {
     
     const effect = document.createElement('div');
     effect.className = 'worker-card-effect';
-    effect.textContent = `+${(card.supportRate * 100).toFixed(2)}% support/s`;
+    effect.textContent = `+${(card.supportRate).toFixed(2)}% support/s`;
     
     cardElement.appendChild(name);
     cardElement.appendChild(effect);

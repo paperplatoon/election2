@@ -38,9 +38,8 @@ function generateVolunteersFromSupport(gameState, supportGain) {
 // Calculates money earned from clicking a state, based on its support percentage
 export function calculateMoneyFromClick(gameState, stateId) {
     const state = gameState.states.find(s => s.id === stateId);
-    if (!state || state.workers.length === 0) return 0;
 
-    return Math.floor(state.supportPercentage * gameState.config.moneyPerSupportPercent);
+    return state.supportPercentage * gameState.config.moneyPerSupportPercent;
 }
 
 // Checks if the player has enough resources to purchase a given item type

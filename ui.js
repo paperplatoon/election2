@@ -22,13 +22,21 @@ export function setStateBackgroundColor(element, type, supportPercentage) {
     const opacity = Math.min(1, supportPercentage / 100);
     element.style.backgroundColor = `rgba(${baseColor}, ${0.3 + (opacity * 0.5)})`;
     
-    // Add winning state indicator
+    // Add winning state indicator with enhanced golden glow
     if (supportPercentage >= 50) {
-        element.style.border = '3px solid #ffcc00';
-        element.style.boxShadow = '0 0 15px rgba(255, 204, 0, 0.5)';
+        element.style.border = '4px solid #ffcc00';
+        element.style.boxShadow = `
+            0 0 20px rgba(255, 204, 0, 0.6),
+            0 0 40px rgba(255, 204, 0, 0.4),
+            0 8px 32px rgba(31, 38, 135, 0.37)
+        `;
     } else {
-        element.style.border = '0.5px solid white';
-        element.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+        // Reset to default enhanced styling
+        element.style.border = '3px solid rgba(255, 255, 255, 0.3)';
+        element.style.boxShadow = `
+            0 8px 32px rgba(31, 38, 135, 0.37),
+            0 2px 8px rgba(0, 0, 0, 0.1)
+        `;
     }
 }
 
@@ -210,10 +218,10 @@ function createStateElement(state, gameState) {
     nameElement.textContent = state.name;
     stateElement.appendChild(nameElement);
     
-    // Support percentage
+    // Support percentage - Updated to show 2 decimal places
     const supportElement = document.createElement('div');
     supportElement.className = 'state-support';
-    supportElement.textContent = `${state.supportPercentage.toFixed(1)}%`;
+    supportElement.textContent = `${state.supportPercentage.toFixed(2)}%`;
     stateElement.appendChild(supportElement);
     
     // Worker count
@@ -229,7 +237,7 @@ function createStateElement(state, gameState) {
         const moneyElement = document.createElement('div');
         moneyElement.className = 'state-money';
         const moneyPerClick = Math.floor(state.supportPercentage * gameState.config.moneyPerSupportPercent);
-        moneyElement.textContent = `${moneyPerClick}/click`;
+        moneyElement.textContent = `$${moneyPerClick}/click`;
         stateElement.appendChild(moneyElement);
     }
     
@@ -263,4 +271,3 @@ export function toggleDropdownMenu(menuId, show) {
         }
     }
 }
-    
