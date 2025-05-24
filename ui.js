@@ -233,13 +233,13 @@ function createStateElement(state, gameState) {
     }
     
     // Money per click (if has workers)
-    if (state.workers.length > 0) {
-        const moneyElement = document.createElement('div');
-        moneyElement.className = 'state-money';
-        const moneyPerClick = Math.floor(state.supportPercentage * gameState.config.moneyPerSupportPercent);
-        moneyElement.textContent = `$${moneyPerClick}/click`;
-        stateElement.appendChild(moneyElement);
-    }
+    // if (state.workers.length > 0) {
+    //     const moneyElement = document.createElement('div');
+    //     moneyElement.className = 'state-money';
+    //     const moneyPerClick = state.supportPercentage * gameState.config.moneyPerSupportPercent;
+    //     moneyElement.textContent = `$${moneyPerClick}/click`;
+    //     stateElement.appendChild(moneyElement);
+    // }
     
     return stateElement;
 }

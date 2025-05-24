@@ -8,7 +8,8 @@ import {
 } from './eventHandlers.js';
 import { 
     updateSupportValues, 
-    calculateStatesWon 
+    calculateStatesWon,
+    generateVolunteersOverTime
 } from './mechanics.js';
 
 // Game variables
@@ -77,6 +78,7 @@ function gameLoop(timestamp) {
 function updateGameState(deltaTime) {
     // Update support values based on workers
     updateSupportValues(gameState, deltaTime);
+    generateVolunteersOverTime(gameState, deltaTime);
 }
 
 // Update the UI to reflect current game state

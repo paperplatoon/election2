@@ -139,3 +139,18 @@ export function calculateStatesWon(gameState) {
     });
     return statesWon;
 }
+
+export function generateVolunteersOverTime(gameState, deltaTime) {
+    let totalSupport = 0;
+    gameState.states.forEach(state => {
+        totalSupport += state.supportPercentage;
+    });
+    
+    // Generate volunteers based on total support percentage
+    const volunteersPerSecond = totalSupport * 0.01; // 1% of total support per second
+    const volunteersGained = volunteersPerSecond * deltaTime;
+    
+    if (volunteersGained > 0) {
+        gameState.resources.volunteers += volunteersGained;
+    }
+}

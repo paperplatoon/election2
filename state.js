@@ -57,7 +57,7 @@ export function createGameState() {
         supportWinThreshold: 50,
         baseSupportRate: 0.01,
         startingWorkers: 3,
-        workerCost: { money: 100, volunteers: 1 },
+        workerCost: { money: 50, volunteers: 0 },
         moneyPerSupportPercent: 1,
         volunteersPerSupportGain: 10,
     };
